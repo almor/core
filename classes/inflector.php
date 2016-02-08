@@ -290,14 +290,14 @@ class Inflector
 		// Decode all entities to their simpler forms
 		$str = html_entity_decode($str, ENT_QUOTES, 'UTF-8');
 
-		// Replace apostrophes.
-		$str = preg_replace("#[\’]#", '-', $str);
-
 		// Remove all quotes.
 		$str = preg_replace("#[\"\']#", '', $str);
 
 		// Only allow 7bit characters
 		$str = static::ascii($str, $allow_non_ascii);
+		
+		// Replace apostrophes.
+		$str = preg_replace("#[\’]#", '-', $str);
 
 		if ($allow_non_ascii)
 		{
